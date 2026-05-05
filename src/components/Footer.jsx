@@ -30,9 +30,9 @@ const Footer = () => {
         {/* Kolom 3: Legalitas & Bantuan */}
         <div className="footer__links">
           <h4>Bantuan</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">FAQ</a>
+          <a href="/kebijakan-privasi">Kebijakan Privasi</a>
+          <a href="/syarat-ketentuan">Syarat Ketentuan</a>
+          <a href="/faq">Tanya Jawab (FAQ)</a>
         </div>
       </div>
 

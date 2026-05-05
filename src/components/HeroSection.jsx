@@ -27,7 +27,7 @@ const HeroSection = () => {
         {/* Right — Copy + CTA */}
         <div className="hero__content">
           <h1 className="hero__headline">
-            Budget smarter,<br />live better
+            Kelola lebih cerdas,<br />hidup lebih baik
           </h1>
 
           <p className="hero__subtext">

@@ -27,8 +27,8 @@ const AboutSection = () => {
         <div className="about__right">
           <p>
             Atur keuangan bulananmu agar terhindar dari{' '}
-            <em>overspending</em> dan{' '}
-            <em>out of track spending</em> dengan aplikasi kami.
+            <em>pengeluaran berlebihan</em> dan{' '}
+            <em>tidak terencana</em> dengan aplikasi kami.
           </p>
         </div>
 

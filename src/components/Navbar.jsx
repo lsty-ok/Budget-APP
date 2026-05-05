@@ -21,22 +21,22 @@ const Navbar = () => {
   // Update active state based on scroll position (Scrollspy)
   useEffect(() => {
     const handleScroll = () => {
-      // Posisi scroll + sedikit offset untuk deteksi
-      const scrollPosition = window.scrollY + 200
-
-      for (const { href } of links) {
+      let currentActive = links[0].href
+      // Reverse iterate to find the active section
+      for (let i = links.length - 1; i >= 0; i--) {
+        const { href } = links[i]
         const sectionId = href.substring(1)
         const el = document.getElementById(sectionId)
         if (el) {
-          const top = el.offsetTop
-          const height = el.offsetHeight
-
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveLink(href)
+          const rect = el.getBoundingClientRect()
+          // Check if top of section is above the middle of the viewport
+          if (rect.top <= window.innerHeight / 2) {
+            currentActive = href
             break
           }
         }
       }
+      setActiveLink(currentActive)
     }
 
     window.addEventListener('scroll', handleScroll)
