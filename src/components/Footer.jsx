@@ -7,8 +7,6 @@ const Footer = () => (
         <a href="/kebijakan-privasi">Kebijakan Privasi</a>
         <a href="/syarat-ketentuan">Syarat Ketentuan</a>
         <a href="/faq">Tanya Jawab (FAQ)</a>
-        <a href="#twitter">Twitter</a>
-        <a href="#discord">Discord</a>
       </div>
       
       <div className="simple-footer__copyright">

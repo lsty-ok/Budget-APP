@@ -2,7 +2,6 @@ import './style.css'
 
 import Navbar          from './components/Navbar'
 import HeroSection     from './components/HeroSection'
-import StatsSection    from './components/StatsSection'
 import AboutSection    from './components/AboutSection'
 import FeaturesSection from './components/FeaturesSection'
 import ReviewSection   from './components/ReviewSection'
@@ -26,7 +25,6 @@ function App() {
       <Navbar />
       <main>
         <HeroSection />
-        <Reveal><StatsSection /></Reveal>
         <Reveal><AboutSection /></Reveal>
         <Reveal><FeaturesSection /></Reveal>
         <Reveal><ReviewSection /></Reveal>

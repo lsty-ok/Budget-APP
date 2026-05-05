@@ -1,21 +1,23 @@
 import logoSvg from '../assets/Icons/Group 2 2-1.svg'
 
+import { Target, BarChart2, Bell } from 'lucide-react'
+
 const VALUE_PROPS = [
   {
     id: 'vp-kontrol',
-    icon: '🎯',
+    icon: <Target size={28} color="#d4e866" />,
     title: 'Kontrol Penuh',
     desc: 'Pantau setiap pengeluaran secara real-time, kapan saja dan di mana saja.',
   },
   {
     id: 'vp-analisis',
-    icon: '📊',
+    icon: <BarChart2 size={28} color="#d4e866" />,
     title: 'Analisis Cerdas',
     desc: 'Laporan visual mingguan dan bulanan yang mudah dipahami sekilas.',
   },
   {
     id: 'vp-notif',
-    icon: '🔔',
+    icon: <Bell size={28} color="#d4e866" />,
     title: 'Pengingat Anggaran',
     desc: 'Notifikasi otomatis saat pengeluaranmu mendekati batas yang ditentukan.',
   },

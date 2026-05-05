@@ -37,7 +37,7 @@ const ReviewCard = ({ id, name, role, quote, rating, index }) => (
       <Avatar name={name} index={index} />
       <div className="review-card__info">
         <span className="review-card__name">{name}</span>
-        <span className="review-card__role">{role} · <span className="review-card__verified">✓ Terverifikasi</span></span>
+        <span className="review-card__role">{role}</span>
       </div>
     </div>
   </article>

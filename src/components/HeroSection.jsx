@@ -1,36 +1,27 @@
 import phoneImg      from '../assets/Images/iPhone 13 Pro - Double Top.png'
 import playstoreIcon  from '../assets/Icons/ri_google-play-fill.svg'
-import logoInline     from '../assets/Icons/Group 2 2.svg'
-import HeroWave       from './HeroWave'
+import logoInline     from '../assets/Icons/Bud_et.svg'
 
 const HeroSection = () => (
   <section id="beranda" className="hero">
-    <HeroWave />
     <div className="hero__inner">
 
-      {/* Kiri — Mockup HP */}
+      {/* Mockup HP (Kiri) */}
       <div className="hero__image-wrapper">
+        <div className="hero__image-glow" />
         <img src={phoneImg} alt="Tampilan aplikasi BudJet di iPhone" className="hero__image" />
         <div className="hero__image-shadow" />
       </div>
 
-      {/* Kanan — Copy + CTA */}
+      {/* Copy + CTA (Kanan) */}
       <div className="hero__content">
-
-        {/* Badge baru */}
-        <div className="hero__badge">
-          <span className="hero__badge-dot" />
-          Baru di Play Store
-        </div>
-
         <h1 className="hero__headline">
           Kelola Lebih Cerdas,<br />Hidup Lebih Baik
         </h1>
 
         <p className="hero__subtext">
-          Capai potensi pengelolaan keuangan dengan{' '}
-          <img src={logoInline} alt="BudJet" style={{ display: 'inline-block', height: '1em', verticalAlign: 'middle', margin: '0 4px', transform: 'translateY(2px)' }} />
-          , cara pintar mengelola uang bulananmu.
+          Capai potensi pengelolaan keuangan dengan cara yang elegan.<br />
+          <img src={logoInline} alt="BudJet" style={{ display: 'inline-block', height: '1em', verticalAlign: 'middle', margin: '0 4px', transform: 'translateY(2px)' }} /> membantu Anda mengelola uang tanpa stres.
         </p>
 
         {/* Dual CTA */}
@@ -46,20 +37,11 @@ const HeroSection = () => (
             Unduh Sekarang
           </a>
           <a href="#fitur" className="hero__cta hero__cta--ghost" id="hero-features-btn">
-            Lihat Fitur
+            Pelajari Lebih Lanjut
           </a>
         </div>
-
-        {/* Trust badges */}
-        <div className="hero__trust">
-          <span>⭐ 4.8 Rating</span>
-          <span className="hero__trust-sep">·</span>
-          <span>10.000+ Pengguna</span>
-          <span className="hero__trust-sep">·</span>
-          <span>Gratis Selamanya</span>
-        </div>
-
       </div>
+
     </div>
   </section>
 )
