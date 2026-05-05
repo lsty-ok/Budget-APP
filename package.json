@@ -17,6 +17,7 @@
     "@vitejs/plugin-react-swc": "^4.3.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-parallax-tilt": "^1.7.322",
     "three": "^0.183.2"
   }
 }

@@ -1,100 +1,91 @@
 import { useState, useEffect } from 'react'
-
-// ── Assets ──────────────────────────────────────────────────
 import logoSvg from '../assets/Icons/Group 2 2-1.svg'
 
-/**
- * Navbar
- * Sticky pill-shaped navigation bar with mobile hamburger toggle.
- */
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeLink, setActiveLink] = useState('#beranda')
+  const [scrolled, setScrolled] = useState(false)
 
   const links = [
-    { label: 'Beranda', href: '#beranda' },
+    { label: 'Beranda',  href: '#beranda'  },
     { label: 'Tentang',  href: '#tentang'  },
     { label: 'Fitur',    href: '#fitur'    },
     { label: 'Ulasan',   href: '#ulasan'   },
   ]
 
-  // Update active state based on scroll position (Scrollspy)
   useEffect(() => {
-    const handleScroll = () => {
-      let currentActive = links[0].href
-      // Reverse iterate to find the active section
-      for (let i = links.length - 1; i >= 0; i--) {
-        const { href } = links[i]
-        const sectionId = href.substring(1)
-        const el = document.getElementById(sectionId)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20)
+      for (const { href } of links) {
+        const el = document.getElementById(href.substring(1))
         if (el) {
           const rect = el.getBoundingClientRect()
-          // Check if top of section is above the middle of the viewport
-          if (rect.top <= window.innerHeight / 2) {
-            currentActive = href
+          // Cek jika elemen berada di pertengahan viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            setActiveLink(href)
             break
           }
         }
       }
-      setActiveLink(currentActive)
     }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // trigger sekali di awal
-
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll)
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
 
   return (
     <nav className="navbar" aria-label="Navigasi utama">
-      <div className="navbar__inner">
+      <div className={`navbar__inner${scrolled ? ' navbar__inner--scrolled' : ''}`}>
         {/* Logo */}
-        <a 
-          href="#beranda" 
-          aria-label="BudJet — kembali ke atas"
-          onClick={() => setActiveLink('#beranda')}
-        >
-          <img
-            src={logoSvg}
-            alt="BudJet logo"
-            className="navbar__logo"
-          />
+        <a href="#beranda" aria-label="BudJet — kembali ke atas" onClick={() => setActiveLink('#beranda')}>
+          <img src={logoSvg} alt="BudJet logo" className="navbar__logo" />
         </a>
 
-        {/* Desktop links */}
-        <ul
-          className={`navbar__links ${menuOpen ? 'open' : ''}`}
-          role="list"
-        >
-          {links.map(({ label, href }) => (
-            <li key={href}>
-              <a
-                href={href}
-                className={activeLink === href ? 'active' : ''}
-                onClick={() => {
-                  setActiveLink(href)
-                  setMenuOpen(false)
-                }}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="navbar__right">
+          {/* Nav Links */}
+          <ul className={`navbar__links${menuOpen ? ' open' : ''}`} role="list">
+            {links.map(({ label, href }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  className={activeLink === href ? 'active' : ''}
+                  onClick={() => { setActiveLink(href); setMenuOpen(false) }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right side — separator + auth buttons */}
+          <div className="navbar__actions">
+            <span className="navbar__sep" aria-hidden="true" />
+            <a href="#download" className="navbar__btn-masuk" id="navbar-masuk-btn">Masuk</a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.budjet.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="navbar__btn-daftar"
+              id="navbar-daftar-btn"
+            >
+              Daftar
+            </a>
+          </div>
+        </div>
 
         {/* Mobile hamburger */}
         <button
-          className="navbar__toggle"
+          className={`navbar__toggle${menuOpen ? ' navbar__toggle--open' : ''}`}
           aria-label="Buka menu navigasi"
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((prev) => !prev)}
+          onClick={() => setMenuOpen(p => !p)}
         >
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </button>
       </div>
+
+      {/* Mobile backdrop */}
+      {menuOpen && <div className="navbar__backdrop" onClick={() => setMenuOpen(false)} />}
     </nav>
   )
 }
