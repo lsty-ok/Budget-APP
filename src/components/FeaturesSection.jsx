@@ -29,7 +29,7 @@ const FeaturesSection = () => {
           </div>
         </div>
 
-        {/* Row 2 */}
+        {/* Row 2 — Disembunyikan sementara karena belum didukung aplikasi mobile
         <div className="features__row features__row--reverse">
           <div className="features__image-col">
             <img src={fitur2} alt="Voice Input" />
@@ -45,8 +45,9 @@ const FeaturesSection = () => {
             </blockquote>
           </div>
         </div>
+        */}
 
-        {/* Row 3 */}
+        {/* Row 3 — Disembunyikan sementara karena belum didukung aplikasi mobile
         <div className="features__row">
           <div className="features__image-col">
             <img src={fitur3} alt="Laporan Bulanan" />
@@ -62,6 +63,7 @@ const FeaturesSection = () => {
             </a>
           </div>
         </div>
+        */}
       </div>
     </section>
   )
