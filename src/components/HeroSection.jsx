@@ -1,9 +1,11 @@
 import phoneImg      from '../assets/Images/iPhone 13 Pro - Double Top.png'
 import playstoreIcon  from '../assets/Icons/ri_google-play-fill.svg'
 import logoInline     from '../assets/Icons/Bud_et.svg'
+import HeroWave      from './HeroWave'
 
 const HeroSection = () => (
   <section id="beranda" className="hero">
+    <HeroWave />
     <div className="hero__inner">
 
       {/* Mockup HP (Kiri) */}
@@ -35,9 +37,6 @@ const HeroSection = () => (
           >
             <img src={playstoreIcon} alt="" aria-hidden="true" />
             Unduh Sekarang
-          </a>
-          <a href="#fitur" className="hero__cta hero__cta--ghost" id="hero-features-btn">
-            Pelajari Lebih Lanjut
           </a>
         </div>
       </div>

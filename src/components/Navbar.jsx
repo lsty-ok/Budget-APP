@@ -60,7 +60,7 @@ const Navbar = () => {
 
         {/* Right side — auth buttons */}
         <div className="navbar__actions">
-          <a href="#download" className="navbar__btn-masuk" id="navbar-masuk-btn">Masuk</a>
+          {/* <a href="http://localhost:5175/" className="navbar__btn-masuk" id="navbar-masuk-btn">Masuk</a> */}
           <a
             href="https://play.google.com/store/apps/details?id=com.budjet.app"
             target="_blank"
