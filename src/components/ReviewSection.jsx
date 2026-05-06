@@ -43,25 +43,45 @@ const ReviewCard = ({ id, name, role, quote, rating, index }) => (
   </article>
 )
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const DraggableTrack = ({ children }) => {
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const startY = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const startPos = useRef(0);
   const startOffset = useRef(0);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 560);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Reset offset when switching between desktop and mobile to avoid layout jumps
+  useEffect(() => {
+    setOffset(0);
+  }, [isMobile]);
 
   const handlePointerDown = (e) => {
     setIsDragging(true);
-    startY.current = e.pageY || (e.touches && e.touches[0].pageY);
+    const pagePos = isMobile
+      ? (e.pageX || (e.touches && e.touches[0].pageX))
+      : (e.pageY || (e.touches && e.touches[0].pageY));
+    startPos.current = pagePos;
     startOffset.current = offset;
   };
 
   const handlePointerMove = (e) => {
     if (!isDragging) return;
-    const currentY = e.pageY || (e.touches && e.touches[0].pageY);
-    const deltaY = currentY - startY.current;
-    setOffset(startOffset.current + deltaY);
+    const pagePos = isMobile
+      ? (e.pageX || (e.touches && e.touches[0].pageX))
+      : (e.pageY || (e.touches && e.touches[0].pageY));
+    const delta = pagePos - startPos.current;
+    setOffset(startOffset.current + delta);
   };
 
   const handlePointerUpOrLeave = () => {
@@ -83,7 +103,10 @@ const DraggableTrack = ({ children }) => {
     >
       <div 
         className="review-drag-wrapper" 
-        style={{ transform: `translateY(${offset}px)` }}
+        style={{ 
+          transform: isMobile ? `translateX(${offset}px)` : `translateY(${offset}px)`,
+          transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+        }}
       >
         {children}
       </div>
